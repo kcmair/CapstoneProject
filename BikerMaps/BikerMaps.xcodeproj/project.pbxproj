@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D81AFDBA2811A55700DB8B9D /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81AFDB92811A55700DB8B9D /* RatingView.swift */; };
 		D81AFDC12811D8FD00DB8B9D /* CreateMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81AFDC02811D8FD00DB8B9D /* CreateMapViewController.swift */; };
+		D81AFE052813988900DB8B9D /* CreateDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81AFE042813988900DB8B9D /* CreateDetailsViewController.swift */; };
+		D81AFE072814B90100DB8B9D /* RatingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81AFE062814B90100DB8B9D /* RatingController.swift */; };
 		D88425FE280F1AFD00DE3019 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88425FD280F1AFD00DE3019 /* AppDelegate.swift */; };
 		D8842600280F1AFD00DE3019 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88425FF280F1AFD00DE3019 /* SceneDelegate.swift */; };
 		D8842602280F1AFD00DE3019 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8842601280F1AFD00DE3019 /* LaunchViewController.swift */; };
@@ -22,8 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D81AFDB92811A55700DB8B9D /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		D81AFDC02811D8FD00DB8B9D /* CreateMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMapViewController.swift; sourceTree = "<group>"; };
+		D81AFE042813988900DB8B9D /* CreateDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDetailsViewController.swift; sourceTree = "<group>"; };
+		D81AFE062814B90100DB8B9D /* RatingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingController.swift; sourceTree = "<group>"; };
 		D88425FA280F1AFD00DE3019 /* BikerMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikerMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D88425FD280F1AFD00DE3019 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D88425FF280F1AFD00DE3019 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				D884261E280F4CAC00DE3019 /* StringConstants.swift */,
-				D81AFDB92811A55700DB8B9D /* RatingView.swift */,
+				D81AFE062814B90100DB8B9D /* RatingController.swift */,
 			);
 			path = "Helpers+Convenience";
 			sourceTree = "<group>";
@@ -131,6 +133,7 @@
 			children = (
 				D8842601280F1AFD00DE3019 /* LaunchViewController.swift */,
 				D81AFDC02811D8FD00DB8B9D /* CreateMapViewController.swift */,
+				D81AFE042813988900DB8B9D /* CreateDetailsViewController.swift */,
 				D8842617280F1C1800DE3019 /* Views */,
 			);
 			path = ViewControllers;
@@ -225,12 +228,13 @@
 			files = (
 				D8842602280F1AFD00DE3019 /* LaunchViewController.swift in Sources */,
 				D81AFDC12811D8FD00DB8B9D /* CreateMapViewController.swift in Sources */,
+				D81AFE072814B90100DB8B9D /* RatingController.swift in Sources */,
 				D8842621280F52EE00DE3019 /* RouteController.swift in Sources */,
 				D88425FE280F1AFD00DE3019 /* AppDelegate.swift in Sources */,
 				D884261D280F1EAE00DE3019 /* Route.swift in Sources */,
 				D884261F280F4CAC00DE3019 /* StringConstants.swift in Sources */,
 				D8842600280F1AFD00DE3019 /* SceneDelegate.swift in Sources */,
-				D81AFDBA2811A55700DB8B9D /* RatingView.swift in Sources */,
+				D81AFE052813988900DB8B9D /* CreateDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

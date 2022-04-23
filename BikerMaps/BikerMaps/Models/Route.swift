@@ -14,8 +14,8 @@ class Route {
     var routeStartpoint: MKPlacemark
     var routeMidpoint: MKPlacemark
     var routeEndpoint: MKPlacemark
-    var routeRegion: Region
-    var cycleType: CycleType
+//    var routeRegion: String
+    var cycleType: String
     var sceneryRating: Double
     var roadRating: Double
     var routeRating: Double
@@ -26,8 +26,8 @@ class Route {
     init(routeStartpoint: MKPlacemark,
          routeMidpoint: MKPlacemark,
          routeEndpoint: MKPlacemark,
-         routeRegion: Region,
-         cycleType: CycleType,
+//         routeRegion: String,
+         cycleType: String,
          sceneryRating: Double,
          roadRating: Double,
          routeRating: Double,
@@ -38,7 +38,7 @@ class Route {
         self.routeStartpoint = routeStartpoint
         self.routeMidpoint = routeMidpoint
         self.routeEndpoint = routeEndpoint
-        self.routeRegion = routeRegion
+//        self.routeRegion = routeRegion
         self.cycleType = cycleType
         self.sceneryRating = sceneryRating
         self.roadRating = roadRating
@@ -54,8 +54,8 @@ extension Route {
         guard let routeStartpoint = ckRecord[CKConstants.routeStartKey] as? MKPlacemark,
               let routeMidpoint = ckRecord[CKConstants.routeMidKey] as? MKPlacemark,
               let routeEndpoint = ckRecord[CKConstants.routeEndKey] as? MKPlacemark,
-              let routeRegion = ckRecord[CKConstants.routeRegionKey] as? Region,
-              let cycleType = ckRecord[CKConstants.cycleTypeKey] as? CycleType,
+//              let routeRegion = ckRecord[CKConstants.routeRegionKey] as? String,
+              let cycleType = ckRecord[CKConstants.cycleTypeKey] as? String,
               let sceneryRating = ckRecord[CKConstants.sceneryRatingKey] as? Double,
               let roadRating = ckRecord[CKConstants.roadRatingKey] as? Double,
               let routeRating = ckRecord[CKConstants.routeRatingKey] as? Double,
@@ -66,7 +66,7 @@ extension Route {
         self.init(routeStartpoint: routeStartpoint,
                   routeMidpoint: routeMidpoint,
                   routeEndpoint: routeEndpoint,
-                  routeRegion: routeRegion,
+//                  routeRegion: routeRegion,
                   cycleType: cycleType,
                   sceneryRating: sceneryRating,
                   roadRating: roadRating,
@@ -92,7 +92,7 @@ extension CKRecord {
             CKConstants.routeStartKey : route.routeStartpoint,
             CKConstants.routeMidKey : route.routeMidpoint,
             CKConstants.routeEndKey : route.routeEndpoint,
-            CKConstants.routeRegionKey : route.routeRegion,
+//            CKConstants.routeRegionKey : route.routeRegion,
             CKConstants.cycleTypeKey : route.cycleType,
             CKConstants.sceneryRatingKey : route.sceneryRating,
             CKConstants.roadRatingKey : route.roadRating,

@@ -117,7 +117,7 @@ class MapScreenViewController: UIViewController {
         request.source                  = MKMapItem(placemark: startingLocation)
         request.destination             = MKMapItem(placemark: destination)
         request.transportType           = .automobile
-        request.requestsAlternateRoutes = true
+        request.requestsAlternateRoutes = false
         
         return request
     }

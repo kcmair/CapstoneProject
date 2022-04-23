@@ -16,11 +16,10 @@ class CreateMapViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     
     // MARK: - Properties
-    var route: Route?
     var directionsArray: [MKDirections] = []
-    var startpointCoordinate: CLLocationCoordinate2D?
-    var midpointCoordinate: CLLocationCoordinate2D?
-    var endpointCoordinate: CLLocationCoordinate2D?
+    var startpointCoordinate = kCLLocationCoordinate2DInvalid
+    var midpointCoordinate = kCLLocationCoordinate2DInvalid
+    var endpointCoordinate = kCLLocationCoordinate2DInvalid
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,35 +35,38 @@ class CreateMapViewController: UIViewController {
     }
     
     func getSelectedLocation() {
-        if startpointCoordinate.debugDescription.isEmpty {
+        if !CLLocationCoordinate2DIsValid(startpointCoordinate) {
             startpointCoordinate = getCenterLocation(for: mapView).coordinate
             directionsLabel.text = "Please select an ending location."
             return
         }
         
-        if endpointCoordinate.debugDescription.isEmpty {
+        if !CLLocationCoordinate2DIsValid(endpointCoordinate) {
             endpointCoordinate = getCenterLocation(for: mapView).coordinate
             directionsLabel.text = "Please select a midpoint location."
             return
         }
         
-        if midpointCoordinate.debugDescription.isEmpty {
+        if !CLLocationCoordinate2DIsValid(midpointCoordinate) {
             midpointCoordinate = getCenterLocation(for: mapView).coordinate
-            createDirectionsRequestfrom(firstCoordinate: startpointCoordinate!, secondCoordinate: midpointCoordinate!)
-            createDirectionsRequestfrom(firstCoordinate: midpointCoordinate!, secondCoordinate: endpointCoordinate!)
+            createDirectionsRequestfrom(firstCoordinate: startpointCoordinate, secondCoordinate: midpointCoordinate)
+            createDirectionsRequestfrom(firstCoordinate: midpointCoordinate, secondCoordinate: endpointCoordinate)
             directionsLabel.text = "Is this the correct route?\n If so tap next."
             selectButton.configuration?.title = "Next"
             return
         }
+        
+        let routeCoordinates = [startpointCoordinate, midpointCoordinate, endpointCoordinate]
+        performSegue(withIdentifier: "newRouteDetails", sender: routeCoordinates)
     }
     
     func createDirectionsRequestfrom(firstCoordinate: CLLocationCoordinate2D, secondCoordinate: CLLocationCoordinate2D) {
-        let firstMarker = MKPlacemark(coordinate: firstCoordinate)
-        let secondMarker = MKPlacemark(coordinate: secondCoordinate)
+        let sourceMarker = MKPlacemark(coordinate: firstCoordinate)
+        let destinationMarker = MKPlacemark(coordinate: secondCoordinate)
         
         let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: firstMarker)
-        request.destination = MKMapItem(placemark: secondMarker)
+        request.source = MKMapItem(placemark: sourceMarker)
+        request.destination = MKMapItem(placemark: destinationMarker)
         request.transportType = .automobile
         request.requestsAlternateRoutes = false
         
@@ -82,9 +84,9 @@ class CreateMapViewController: UIViewController {
             guard let response = response
             else { return }
             
-            for routeView in response.routes {
-                self.mapView.addOverlay(routeView.polyline)
-                self.mapView.setVisibleMapRect(routeView.polyline.boundingMapRect, animated: true)
+            for route in response.routes {
+                self.mapView.addOverlay(route.polyline)
+                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
             }
         }
     }
@@ -99,3 +101,12 @@ class CreateMapViewController: UIViewController {
         getSelectedLocation()
     }
 }
+
+extension CreateMapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .blue
+        
+        return renderer
+    }
+} // End of extension

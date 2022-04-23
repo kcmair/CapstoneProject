@@ -7,20 +7,21 @@
 
 import Foundation
 
-class Region {
-    let northWest = "North West"
-    let southWest = "South West"
-    let northCentral = "North Central"
-    let southCentral = "South Central"
-    let northEast = "North East"
-    let southEast = "South East"
+struct Region {
+    static let northWest = "North West"
+    static let southWest = "South West"
+    static let northCentral = "North Central"
+    static let southCentral = "South Central"
+    static let northEast = "North East"
+    static let southEast = "South East"
 } // End of class
 
-class CycleType {
-    let roadBicycle = "Road Bicycle"
-    let roadMotorcycle = "Road Motorcycle"
-    let mountainBike = "Mountain Bike"
-    let dirtBike = "Dirt Bike"
+struct CycleType {
+    static let roadBicycle = "Road Bicycle"
+    static let roadMotorcycle = "Road Motorcycle"
+    static let mountainBike = "Mountain Bike"
+    static let dirtBike = "Motocross/Dirt Bike"
+    static let dualSport = "Dual Sport Motorcycle"
 } // End of class
 
 struct CKConstants {

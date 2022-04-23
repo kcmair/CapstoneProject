@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G3H-Uh-W1T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kmk-ka-aoB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -305,6 +305,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y4T-Eo-Ysb">
                                 <rect key="frame" x="0.0" y="88" width="414" height="753.5"/>
+                                <connections>
+                                    <outlet property="delegate" destination="71Y-RB-s47" id="jSX-Er-3XY"/>
+                                </connections>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please selct a starting location." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arh-uS-J1h">
                                 <rect key="frame" x="0.0" y="841.5" width="414" height="20.5"/>
@@ -360,17 +363,17 @@
                         <outlet property="directionsLabel" destination="arh-uS-J1h" id="2i9-hF-uNa"/>
                         <outlet property="mapView" destination="Y4T-Eo-Ysb" id="VRV-xs-aAK"/>
                         <outlet property="selectButton" destination="QoY-f6-1Qu" id="f3E-g1-1JY"/>
-                        <segue destination="kmk-ka-aoB" kind="show" id="Swz-Ew-LHo"/>
+                        <segue destination="kmk-ka-aoB" kind="show" identifier="newRouteDetails" id="Swz-Ew-LHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8N-AH-kHt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1941" y="-645"/>
+            <point key="canvasLocation" x="1546" y="-646"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Details View Controller-->
         <scene sceneID="iJl-qv-pRH">
             <objects>
-                <viewController id="kmk-ka-aoB" sceneMemberID="viewController">
+                <viewController id="kmk-ka-aoB" customClass="CreateDetailsViewController" customModule="BikerMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iyb-yF-nfG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,63 +382,172 @@
                                 <rect key="frame" x="20" y="88" width="374" height="774"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a name for this route." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fJ-TH-G0m">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="15.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Route name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0s9-T4-NiY">
-                                        <rect key="frame" x="0.0" y="24.5" width="374" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="23.5" width="374" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What type of motorcycle/bicycle woud be best suited for this route?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGs-8o-cVp">
-                                        <rect key="frame" x="0.0" y="59" width="374" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="57.5" width="374" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lg-PN-xyu">
-                                        <rect key="frame" x="0.0" y="83" width="374" height="77"/>
+                                        <rect key="frame" x="0.0" y="81" width="374" height="46"/>
+                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many stars would you give the scenery?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVQ-DG-dQJ">
-                                        <rect key="frame" x="0.0" y="168" width="374" height="16.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="135" width="374" height="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzm-J1-Wxh">
-                                        <rect key="frame" x="0.0" y="192.5" width="374" height="39.5"/>
+                                        <rect key="frame" x="0.0" y="158" width="374" height="38"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkD-iZ-bVM">
+                                                <rect key="frame" x="69.5" y="3.5" width="235" height="31"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTX-aT-3Xz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-gE-C7c">
+                                                        <rect key="frame" x="47" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWi-A4-TsR">
+                                                        <rect key="frame" x="94" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgX-Sa-Kke">
+                                                        <rect key="frame" x="141" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKS-2Z-Yxf">
+                                                        <rect key="frame" x="188" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="rkD-iZ-bVM" firstAttribute="centerY" secondItem="zzm-J1-Wxh" secondAttribute="centerY" id="F1e-6y-gx4"/>
+                                            <constraint firstItem="rkD-iZ-bVM" firstAttribute="centerX" secondItem="zzm-J1-Wxh" secondAttribute="centerX" id="VaZ-xv-ezn"/>
+                                        </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are the road conditions?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHg-RJ-3pH">
-                                        <rect key="frame" x="0.0" y="240" width="374" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="204" width="374" height="15.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-17-2fW">
-                                        <rect key="frame" x="0.0" y="264.5" width="374" height="39.5"/>
+                                        <rect key="frame" x="0.0" y="227.5" width="374" height="38.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9U-bq-QHW">
+                                                <rect key="frame" x="69.5" y="3.5" width="235" height="31"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7L-4s-BO9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGN-IE-xsw">
+                                                        <rect key="frame" x="47" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vV-mV-Gon">
+                                                        <rect key="frame" x="94" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0r-19-1cm">
+                                                        <rect key="frame" x="141" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppq-gE-ric">
+                                                        <rect key="frame" x="188" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="s9U-bq-QHW" firstAttribute="centerY" secondItem="hxm-17-2fW" secondAttribute="centerY" id="BiP-F5-n52"/>
+                                            <constraint firstItem="s9U-bq-QHW" firstAttribute="centerX" secondItem="hxm-17-2fW" secondAttribute="centerX" id="hz8-BB-ts4"/>
+                                        </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your overall rating of this route?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4N-7a-JH8">
-                                        <rect key="frame" x="0.0" y="312" width="374" height="16"/>
+                                        <rect key="frame" x="0.0" y="274" width="374" height="15.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXY-xy-BAy">
-                                        <rect key="frame" x="0.0" y="336" width="374" height="40"/>
+                                        <rect key="frame" x="0.0" y="297.5" width="374" height="38"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xjq-jT-0NX">
+                                                <rect key="frame" x="69.5" y="3.5" width="235" height="31"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-el-NcY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CB-3A-8kX">
+                                                        <rect key="frame" x="47" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYn-gj-syr">
+                                                        <rect key="frame" x="94" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elw-Qt-MnR">
+                                                        <rect key="frame" x="141" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQB-KV-5Uj">
+                                                        <rect key="frame" x="188" y="0.0" width="47" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Xjq-jT-0NX" firstAttribute="centerY" secondItem="rXY-xy-BAy" secondAttribute="centerY" id="9eS-uM-kIX"/>
+                                            <constraint firstItem="Xjq-jT-0NX" firstAttribute="centerX" secondItem="rXY-xy-BAy" secondAttribute="centerX" id="mi7-Dj-4U9"/>
+                                        </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aditional notes (optional):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvO-UH-Lw3">
-                                        <rect key="frame" x="0.0" y="384" width="374" height="16"/>
+                                        <rect key="frame" x="0.0" y="343.5" width="374" height="15.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sss-yy-4Ac">
-                                        <rect key="frame" x="0.0" y="408" width="374" height="366"/>
+                                        <rect key="frame" x="0.0" y="367" width="374" height="407"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -443,7 +555,7 @@
                                     </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="8lg-PN-xyu" firstAttribute="height" secondItem="bYE-8R-fXn" secondAttribute="height" multiplier="0.1" id="H2m-Ur-iJn"/>
+                                    <constraint firstItem="8lg-PN-xyu" firstAttribute="height" secondItem="bYE-8R-fXn" secondAttribute="height" multiplier="0.06" id="H2m-Ur-iJn"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -457,8 +569,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JIT-fE-lsq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xbU-MK-nzr"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xbU-MK-nzr">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="kmk-ka-aoB" id="EHL-DC-Ded"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cyclePicker" destination="8lg-PN-xyu" id="9kI-Rg-m6R"/>
+                        <outlet property="notesTextView" destination="Sss-yy-4Ac" id="A9Q-tA-PAy"/>
+                        <outlet property="overallRatingView" destination="rXY-xy-BAy" id="aGf-nn-q5w"/>
+                        <outlet property="roadRatingView" destination="hxm-17-2fW" id="lee-kU-AS8"/>
+                        <outlet property="routeNameTextField" destination="0s9-T4-NiY" id="RNM-SS-YM2"/>
+                        <outlet property="sceneryRatingView" destination="zzm-J1-Wxh" id="mPW-IQ-w0y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IuF-Zd-SEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -484,11 +608,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Eyf-91-TJg"/>
+        <segue reference="Swz-Ew-LHo"/>
         <segue reference="h5f-6Y-4ig"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pin" width="199" height="253"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -497,6 +622,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
