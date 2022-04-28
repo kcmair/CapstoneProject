@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kmk-ka-aoB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G3H-Uh-W1T">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -24,7 +24,6 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="CREATE NEW ROUTE"/>
                                         <connections>
-                                            <action selector="createRouteButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sGl-P0-0JD"/>
                                             <segue destination="71Y-RB-s47" kind="show" identifier="createRoute" id="a5H-yz-WCr"/>
                                         </connections>
                                     </button>
@@ -33,7 +32,6 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="VIEW EXISTING ROUTES"/>
                                         <connections>
-                                            <action selector="viewRoutesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H1x-tW-wQ2"/>
                                             <segue destination="v8l-iN-hzB" kind="show" id="pSs-b2-ycu"/>
                                         </connections>
                                     </button>
@@ -42,7 +40,6 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="HELP"/>
                                         <connections>
-                                            <action selector="helpButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9eI-xy-qEN"/>
                                             <segue destination="TuJ-VU-6fi" kind="show" id="Lx4-AF-CHz"/>
                                         </connections>
                                     </button>
@@ -87,83 +84,100 @@
             </objects>
             <point key="canvasLocation" x="1941" y="644"/>
         </scene>
-        <!--View Controller-->
+        <!--Route List View Controller-->
         <scene sceneID="97L-KN-ezd">
             <objects>
-                <viewController id="v8l-iN-hzB" sceneMemberID="viewController">
+                <viewController id="v8l-iN-hzB" customClass="RouteListViewController" customModule="BikerMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LmC-OU-TSu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Teb-CA-rdz">
-                                <rect key="frame" x="20" y="88" width="374" height="20.5"/>
+                                <rect key="frame" x="20" y="88" width="374" height="21.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7a-CD-HKR">
-                                        <rect key="frame" x="0.0" y="0.0" width="187" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ending Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jys-ro-lcL">
-                                        <rect key="frame" x="187" y="0.0" width="187" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="187" y="0.0" width="187" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="NP6-Cn-Abu" detailTextLabel="EzY-j0-u5T" rowHeight="37" style="IBUITableViewCellStyleValue1" translatesAutoresizingMaskIntoConstraints="NO" id="wDe-Zf-JLY">
-                                <rect key="frame" x="0.0" y="116" width="414" height="37"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wDe-Zf-JLY" id="j6E-pO-q9P">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NP6-Cn-Abu">
-                                            <rect key="frame" x="20" y="12" width="25" height="14.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="37m-Jj-ly0">
+                                <rect key="frame" x="0.0" y="109.5" width="414" height="752.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeTable" rowHeight="40" id="wDe-Zf-JLY" customClass="RouteTableViewCell" customModule="BikerMaps" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wDe-Zf-JLY" id="j6E-pO-q9P">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EzY-j0-u5T">
-                                            <rect key="frame" x="361" y="12" width="33" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="fH9-Wq-AYC" kind="show" id="h5f-6Y-4ig"/>
-                                </connections>
-                            </tableViewCell>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zZC-qf-0d1">
+                                                    <rect key="frame" x="20" y="10" width="374" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Startpoint)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpH-e0-SaO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Endpoint)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPb-0M-kFn">
+                                                            <rect key="frame" x="187" y="0.0" width="187" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zZC-qf-0d1" secondAttribute="trailing" id="1T6-f5-nQ2"/>
+                                                <constraint firstItem="zZC-qf-0d1" firstAttribute="leading" secondItem="j6E-pO-q9P" secondAttribute="leadingMargin" id="mAu-FQ-uPZ"/>
+                                                <constraint firstItem="zZC-qf-0d1" firstAttribute="centerY" secondItem="j6E-pO-q9P" secondAttribute="centerY" id="pv3-8A-baA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="endpointLabel" destination="jPb-0M-kFn" id="xcb-SF-AK4"/>
+                                            <outlet property="startpointLabel" destination="gpH-e0-SaO" id="VR3-8U-Ssj"/>
+                                            <segue destination="fH9-Wq-AYC" kind="show" identifier="toRouteDetails" id="ewf-wS-4wW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mn7-gP-tv8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Teb-CA-rdz" secondAttribute="trailing" constant="20" id="5RX-19-sPB"/>
                             <constraint firstItem="Teb-CA-rdz" firstAttribute="top" secondItem="Mn7-gP-tv8" secondAttribute="top" id="bpV-UP-jXQ"/>
+                            <constraint firstItem="Mn7-gP-tv8" firstAttribute="trailing" secondItem="37m-Jj-ly0" secondAttribute="trailing" id="idY-SO-wII"/>
+                            <constraint firstItem="37m-Jj-ly0" firstAttribute="leading" secondItem="Mn7-gP-tv8" secondAttribute="leading" id="kBd-9R-0UP"/>
+                            <constraint firstItem="37m-Jj-ly0" firstAttribute="top" secondItem="Teb-CA-rdz" secondAttribute="bottom" id="l9z-b4-CLq"/>
+                            <constraint firstItem="Mn7-gP-tv8" firstAttribute="bottom" secondItem="37m-Jj-ly0" secondAttribute="bottom" id="naX-jw-IRu"/>
                             <constraint firstItem="Teb-CA-rdz" firstAttribute="leading" secondItem="Mn7-gP-tv8" secondAttribute="leading" constant="20" id="p31-q4-6Xk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IaI-bx-3wo">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Brb-0T-nYc">
-                            <connections>
-                                <segue destination="fH9-Wq-AYC" kind="show" id="Qb6-zb-hdh"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="IaI-bx-3wo"/>
+                    <connections>
+                        <outlet property="tableview" destination="37m-Jj-ly0" id="Ebs-ST-J2G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o6f-bw-hc2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1941" y="1"/>
         </scene>
-        <!--View Controller-->
+        <!--Route Detail View Controller-->
         <scene sceneID="3Wy-xA-JR6">
             <objects>
-                <viewController id="fH9-Wq-AYC" sceneMemberID="viewController">
+                <viewController id="fH9-Wq-AYC" customClass="RouteDetailViewController" customModule="BikerMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xlm-hX-jdE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,6 +289,9 @@
                             </stackView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mTj-2e-SMm">
                                 <rect key="frame" x="0.0" y="207" width="414" height="655"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fH9-Wq-AYC" id="q4J-hF-HLb"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e3F-Dz-CSG"/>
@@ -290,6 +307,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pSt-Kq-HKx"/>
+                    <connections>
+                        <outlet property="cycleTypeLabel" destination="vSs-nH-Bjg" id="c4p-GG-i2u"/>
+                        <outlet property="distanceLabel" destination="WWj-36-sOV" id="ShO-v9-QbB"/>
+                        <outlet property="mapView" destination="mTj-2e-SMm" id="Y9Y-Mh-nJp"/>
+                        <outlet property="overallRatingLabel" destination="baG-BS-BjU" id="FsY-i3-05Q"/>
+                        <outlet property="roadRatingLabel" destination="coq-wv-Men" id="Pw8-ea-HVc"/>
+                        <outlet property="routeNameLabel" destination="MpS-M9-QoR" id="CFu-Xy-okt"/>
+                        <outlet property="sceneryRatingLabel" destination="QpB-hd-Xq9" id="NKT-cG-C6C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAI-z9-dbZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -316,7 +342,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="wnc-ev-O8p">
-                                <rect key="frame" x="195" y="447" width="40" height="40"/>
+                                <rect key="frame" x="196" y="430" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="svH-ez-CyG"/>
                                     <constraint firstAttribute="width" constant="40" id="vFK-1R-d8d"/>
@@ -339,26 +365,20 @@
                         <constraints>
                             <constraint firstItem="SYI-xV-IM8" firstAttribute="trailing" secondItem="arh-uS-J1h" secondAttribute="trailing" id="6DD-1a-L1o"/>
                             <constraint firstItem="arh-uS-J1h" firstAttribute="top" secondItem="Y4T-Eo-Ysb" secondAttribute="bottom" id="7Y0-2S-yJG"/>
-                            <constraint firstItem="wnc-ev-O8p" firstAttribute="centerY" secondItem="SYI-xV-IM8" secondAttribute="centerY" constant="-8" id="EzE-nz-EFA"/>
+                            <constraint firstItem="wnc-ev-O8p" firstAttribute="centerY" secondItem="SYI-xV-IM8" secondAttribute="centerY" constant="-25" id="EzE-nz-EFA"/>
                             <constraint firstItem="arh-uS-J1h" firstAttribute="leading" secondItem="SYI-xV-IM8" secondAttribute="leading" id="Kci-RD-ax7"/>
                             <constraint firstItem="Y4T-Eo-Ysb" firstAttribute="leading" secondItem="SYI-xV-IM8" secondAttribute="leading" id="Lxl-EN-8du"/>
                             <constraint firstItem="Y4T-Eo-Ysb" firstAttribute="top" secondItem="SYI-xV-IM8" secondAttribute="top" id="UuQ-ly-ZYb"/>
                             <constraint firstItem="arh-uS-J1h" firstAttribute="top" secondItem="Y4T-Eo-Ysb" secondAttribute="bottom" id="XmW-oU-RZw"/>
                             <constraint firstItem="arh-uS-J1h" firstAttribute="top" secondItem="QoY-f6-1Qu" secondAttribute="bottom" id="cQx-NX-MZV"/>
-                            <constraint firstItem="wnc-ev-O8p" firstAttribute="centerX" secondItem="SYI-xV-IM8" secondAttribute="centerX" constant="8" id="gUX-YP-EuS"/>
+                            <constraint firstItem="wnc-ev-O8p" firstAttribute="centerX" secondItem="SYI-xV-IM8" secondAttribute="centerX" constant="9" id="gUX-YP-EuS"/>
                             <constraint firstItem="QoY-f6-1Qu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SYI-xV-IM8" secondAttribute="leading" symbolic="YES" id="qPz-eF-nmZ"/>
                             <constraint firstItem="arh-uS-J1h" firstAttribute="bottom" secondItem="SYI-xV-IM8" secondAttribute="bottom" id="rbU-N3-4jj"/>
                             <constraint firstItem="SYI-xV-IM8" firstAttribute="trailing" secondItem="QoY-f6-1Qu" secondAttribute="trailing" constant="20" id="sNy-8i-P37"/>
                             <constraint firstItem="SYI-xV-IM8" firstAttribute="trailing" secondItem="Y4T-Eo-Ysb" secondAttribute="trailing" id="um5-IM-nch"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gLI-fp-VEq">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="4p0-qC-7My">
-                            <connections>
-                                <segue destination="kmk-ka-aoB" kind="show" id="Eyf-91-TJg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="gLI-fp-VEq"/>
                     <connections>
                         <outlet property="directionsLabel" destination="arh-uS-J1h" id="2i9-hF-uNa"/>
                         <outlet property="mapView" destination="Y4T-Eo-Ysb" id="VRV-xs-aAK"/>
@@ -368,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8N-AH-kHt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="-646"/>
+            <point key="canvasLocation" x="1941" y="-646"/>
         </scene>
         <!--Create Details View Controller-->
         <scene sceneID="iJl-qv-pRH">
@@ -378,176 +398,227 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bYE-8R-fXn">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bYE-8R-fXn">
                                 <rect key="frame" x="20" y="88" width="374" height="774"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a name for this route." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fJ-TH-G0m">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="15.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Please enter a name for this route." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fJ-TH-G0m">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Route name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0s9-T4-NiY">
-                                        <rect key="frame" x="0.0" y="23.5" width="374" height="26"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Route name..." textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0s9-T4-NiY">
+                                        <rect key="frame" x="0.0" y="28.5" width="374" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="RaI-sc-n3n"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What type of motorcycle/bicycle woud be best suited for this route?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGs-8o-cVp">
-                                        <rect key="frame" x="0.0" y="57.5" width="374" height="15"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="374" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lg-PN-xyu">
-                                        <rect key="frame" x="0.0" y="81" width="374" height="46"/>
+                                        <rect key="frame" x="0.0" y="113" width="374" height="46.5"/>
                                         <color key="backgroundColor" systemColor="systemCyanColor"/>
                                     </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many stars would you give the scenery?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVQ-DG-dQJ">
-                                        <rect key="frame" x="0.0" y="135" width="374" height="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="How many stars would you give the scenery?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVQ-DG-dQJ">
+                                        <rect key="frame" x="0.0" y="167.5" width="374" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzm-J1-Wxh">
-                                        <rect key="frame" x="0.0" y="158" width="374" height="38"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rj2-Yi-dGj">
+                                        <rect key="frame" x="0.0" y="195.5" width="374" height="38"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkD-iZ-bVM">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rkD-iZ-bVM">
                                                 <rect key="frame" x="69.5" y="3.5" width="235" height="31"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTX-aT-3Xz">
                                                         <rect key="frame" x="0.0" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="sceneryRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="0Yn-LV-IgO"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-gE-C7c">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-gE-C7c">
                                                         <rect key="frame" x="47" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="sceneryRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="w7J-fZ-J5q"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWi-A4-TsR">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWi-A4-TsR">
                                                         <rect key="frame" x="94" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="sceneryRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="gsX-4h-k0o"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgX-Sa-Kke">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgX-Sa-Kke">
                                                         <rect key="frame" x="141" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="sceneryRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="MdQ-VF-ulL"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKS-2Z-Yxf">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKS-2Z-Yxf">
                                                         <rect key="frame" x="188" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="sceneryRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="5nR-US-xMH"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="rkD-iZ-bVM" firstAttribute="centerY" secondItem="zzm-J1-Wxh" secondAttribute="centerY" id="F1e-6y-gx4"/>
-                                            <constraint firstItem="rkD-iZ-bVM" firstAttribute="centerX" secondItem="zzm-J1-Wxh" secondAttribute="centerX" id="VaZ-xv-ezn"/>
+                                            <constraint firstItem="rkD-iZ-bVM" firstAttribute="top" secondItem="Rj2-Yi-dGj" secondAttribute="top" constant="3.5" id="4FX-wC-xB6"/>
+                                            <constraint firstItem="rkD-iZ-bVM" firstAttribute="centerY" secondItem="Rj2-Yi-dGj" secondAttribute="centerY" id="F1z-fE-4Ri"/>
+                                            <constraint firstItem="rkD-iZ-bVM" firstAttribute="centerX" secondItem="Rj2-Yi-dGj" secondAttribute="centerX" id="KRA-j9-01C"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are the road conditions?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHg-RJ-3pH">
-                                        <rect key="frame" x="0.0" y="204" width="374" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="241.5" width="374" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-17-2fW">
-                                        <rect key="frame" x="0.0" y="227.5" width="374" height="38.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ca-7c-f0Q">
+                                        <rect key="frame" x="0.0" y="249.5" width="374" height="38"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9U-bq-QHW">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="s9U-bq-QHW">
                                                 <rect key="frame" x="69.5" y="3.5" width="235" height="31"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7L-4s-BO9">
                                                         <rect key="frame" x="0.0" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="roadRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="6jf-yB-nkU"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGN-IE-xsw">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGN-IE-xsw">
                                                         <rect key="frame" x="47" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="roadRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="Cth-se-SLr"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vV-mV-Gon">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vV-mV-Gon">
                                                         <rect key="frame" x="94" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="roadRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="AHG-6M-gJI"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0r-19-1cm">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0r-19-1cm">
                                                         <rect key="frame" x="141" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="roadRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="Sno-mf-r6S"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppq-gE-ric">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppq-gE-ric">
                                                         <rect key="frame" x="188" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="roadRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="Tqq-Ey-718"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="s9U-bq-QHW" firstAttribute="centerY" secondItem="hxm-17-2fW" secondAttribute="centerY" id="BiP-F5-n52"/>
-                                            <constraint firstItem="s9U-bq-QHW" firstAttribute="centerX" secondItem="hxm-17-2fW" secondAttribute="centerX" id="hz8-BB-ts4"/>
+                                            <constraint firstItem="s9U-bq-QHW" firstAttribute="centerX" secondItem="1ca-7c-f0Q" secondAttribute="centerX" id="3qw-0O-sv3"/>
+                                            <constraint firstItem="s9U-bq-QHW" firstAttribute="centerY" secondItem="1ca-7c-f0Q" secondAttribute="centerY" id="brf-f2-jHn"/>
+                                            <constraint firstItem="s9U-bq-QHW" firstAttribute="top" secondItem="1ca-7c-f0Q" secondAttribute="top" constant="3.5" id="kq8-6A-58v"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your overall rating of this route?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4N-7a-JH8">
-                                        <rect key="frame" x="0.0" y="274" width="374" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="295.5" width="374" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXY-xy-BAy">
-                                        <rect key="frame" x="0.0" y="297.5" width="374" height="38"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Dz-1y-Jb3">
+                                        <rect key="frame" x="0.0" y="303.5" width="374" height="39"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xjq-jT-0NX">
-                                                <rect key="frame" x="69.5" y="3.5" width="235" height="31"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="Xjq-jT-0NX">
+                                                <rect key="frame" x="69.5" y="4" width="235" height="31"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-el-NcY">
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-el-NcY">
                                                         <rect key="frame" x="0.0" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="ovarallRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="TnO-w5-rPl"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CB-3A-8kX">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CB-3A-8kX">
                                                         <rect key="frame" x="47" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="ovarallRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="LRi-sg-6HZ"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYn-gj-syr">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYn-gj-syr">
                                                         <rect key="frame" x="94" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="ovarallRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="fAd-iD-RKY"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elw-Qt-MnR">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elw-Qt-MnR">
                                                         <rect key="frame" x="141" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="ovarallRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="o32-Vc-2Zp"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQB-KV-5Uj">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQB-KV-5Uj">
                                                         <rect key="frame" x="188" y="0.0" width="47" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="ovarallRatingButtonTapped:" destination="kmk-ka-aoB" eventType="touchUpInside" id="kdx-MR-eSN"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="Xjq-jT-0NX" firstAttribute="centerY" secondItem="rXY-xy-BAy" secondAttribute="centerY" id="9eS-uM-kIX"/>
-                                            <constraint firstItem="Xjq-jT-0NX" firstAttribute="centerX" secondItem="rXY-xy-BAy" secondAttribute="centerX" id="mi7-Dj-4U9"/>
+                                            <constraint firstItem="Xjq-jT-0NX" firstAttribute="centerY" secondItem="3Dz-1y-Jb3" secondAttribute="centerY" id="O0K-CG-Jqw"/>
+                                            <constraint firstItem="Xjq-jT-0NX" firstAttribute="top" secondItem="3Dz-1y-Jb3" secondAttribute="top" constant="4" id="v17-OB-Qlh"/>
+                                            <constraint firstItem="Xjq-jT-0NX" firstAttribute="centerX" secondItem="3Dz-1y-Jb3" secondAttribute="centerX" id="zWD-3W-4AP"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aditional notes (optional):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvO-UH-Lw3">
-                                        <rect key="frame" x="0.0" y="343.5" width="374" height="15.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Aditional notes (optional):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvO-UH-Lw3">
+                                        <rect key="frame" x="0.0" y="350.5" width="374" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sss-yy-4Ac">
-                                        <rect key="frame" x="0.0" y="367" width="374" height="407"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="252" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sss-yy-4Ac">
+                                        <rect key="frame" x="0.0" y="372" width="374" height="402"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -555,7 +626,14 @@
                                     </textView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Sss-yy-4Ac" firstAttribute="top" secondItem="mvO-UH-Lw3" secondAttribute="bottom" constant="8" symbolic="YES" id="4x6-Le-A6V"/>
+                                    <constraint firstItem="Rj2-Yi-dGj" firstAttribute="top" secondItem="MVQ-DG-dQJ" secondAttribute="bottom" constant="8" symbolic="YES" id="7dy-Y8-fPu"/>
+                                    <constraint firstItem="Sss-yy-4Ac" firstAttribute="leading" secondItem="bYE-8R-fXn" secondAttribute="leading" id="FSs-94-2gw"/>
                                     <constraint firstItem="8lg-PN-xyu" firstAttribute="height" secondItem="bYE-8R-fXn" secondAttribute="height" multiplier="0.06" id="H2m-Ur-iJn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sss-yy-4Ac" secondAttribute="trailing" id="JNu-v1-5G3"/>
+                                    <constraint firstItem="Rj2-Yi-dGj" firstAttribute="top" secondItem="bYE-8R-fXn" secondAttribute="top" constant="195.5" id="bME-qY-Ou3"/>
+                                    <constraint firstAttribute="bottom" secondItem="Sss-yy-4Ac" secondAttribute="bottom" id="fMO-QI-EnM"/>
+                                    <constraint firstItem="Rj2-Yi-dGj" firstAttribute="top" secondItem="MVQ-DG-dQJ" secondAttribute="bottom" constant="8" id="iyq-Df-R2H"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -578,10 +656,22 @@
                     <connections>
                         <outlet property="cyclePicker" destination="8lg-PN-xyu" id="9kI-Rg-m6R"/>
                         <outlet property="notesTextView" destination="Sss-yy-4Ac" id="A9Q-tA-PAy"/>
-                        <outlet property="overallRatingView" destination="rXY-xy-BAy" id="aGf-nn-q5w"/>
-                        <outlet property="roadRatingView" destination="hxm-17-2fW" id="lee-kU-AS8"/>
                         <outlet property="routeNameTextField" destination="0s9-T4-NiY" id="RNM-SS-YM2"/>
-                        <outlet property="sceneryRatingView" destination="zzm-J1-Wxh" id="mPW-IQ-w0y"/>
+                        <outletCollection property="sceneryRatingCollection" destination="NTX-aT-3Xz" collectionClass="NSMutableArray" id="OZZ-99-d5p"/>
+                        <outletCollection property="sceneryRatingCollection" destination="qO4-gE-C7c" collectionClass="NSMutableArray" id="3dO-lA-ojs"/>
+                        <outletCollection property="sceneryRatingCollection" destination="TWi-A4-TsR" collectionClass="NSMutableArray" id="wTs-4c-btr"/>
+                        <outletCollection property="sceneryRatingCollection" destination="HgX-Sa-Kke" collectionClass="NSMutableArray" id="yxd-oF-MBX"/>
+                        <outletCollection property="sceneryRatingCollection" destination="WKS-2Z-Yxf" collectionClass="NSMutableArray" id="fTX-fG-frH"/>
+                        <outletCollection property="roadRatingCollection" destination="f7L-4s-BO9" collectionClass="NSMutableArray" id="UOv-55-DTb"/>
+                        <outletCollection property="roadRatingCollection" destination="wGN-IE-xsw" collectionClass="NSMutableArray" id="shg-uX-V2N"/>
+                        <outletCollection property="roadRatingCollection" destination="3vV-mV-Gon" collectionClass="NSMutableArray" id="o6h-r3-fSD"/>
+                        <outletCollection property="roadRatingCollection" destination="b0r-19-1cm" collectionClass="NSMutableArray" id="8mE-z6-k3I"/>
+                        <outletCollection property="roadRatingCollection" destination="Ppq-gE-ric" collectionClass="NSMutableArray" id="xtg-jF-9EN"/>
+                        <outletCollection property="overallRatingCollection" destination="JBc-el-NcY" collectionClass="NSMutableArray" id="ffO-zO-2JH"/>
+                        <outletCollection property="overallRatingCollection" destination="5CB-3A-8kX" collectionClass="NSMutableArray" id="BMN-a0-OPA"/>
+                        <outletCollection property="overallRatingCollection" destination="vYn-gj-syr" collectionClass="NSMutableArray" id="rTz-ak-Fbg"/>
+                        <outletCollection property="overallRatingCollection" destination="elw-Qt-MnR" collectionClass="NSMutableArray" id="wk3-0M-elo"/>
+                        <outletCollection property="overallRatingCollection" destination="xQB-KV-5Uj" collectionClass="NSMutableArray" id="8iv-UF-SzT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IuF-Zd-SEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -607,10 +697,6 @@
             <point key="canvasLocation" x="309" y="50"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Swz-Ew-LHo"/>
-        <segue reference="h5f-6Y-4ig"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="pin" width="199" height="253"/>
         <image name="star" catalog="system" width="128" height="116"/>

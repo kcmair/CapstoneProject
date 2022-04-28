@@ -14,15 +14,15 @@ class LaunchViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-    // MARK: - Actions
-    @IBAction func createRouteButtonTapped(_ sender: Any) {
-    }
     
-    @IBAction func viewRoutesButtonTapped(_ sender: Any) {
-    }
-    
-    @IBAction func helpButtonTapped(_ sender: Any) {
+    override func viewDidAppear(_ animated: Bool) {
+        RouteController.shared.fetchRoutes { success in
+            if success {
+                print("Launchpad has loaded the data from iCloud.")
+            } else {
+                print("Launchpad was unable to obtaint the data from iCloud.")
+            }
+        }
     }
 } // End of class
 

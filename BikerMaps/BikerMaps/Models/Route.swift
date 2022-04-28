@@ -11,68 +11,76 @@ import CloudKit
 
 class Route {
     
-    var routeStartpoint: MKPlacemark
-    var routeMidpoint: MKPlacemark
-    var routeEndpoint: MKPlacemark
-//    var routeRegion: String
+    var routeStartpoint: CLLocationCoordinate2D
+    var routeMidpoint: CLLocationCoordinate2D
+    var routeEndpoint: CLLocationCoordinate2D
+    var routeName: String
     var cycleType: String
-    var sceneryRating: Double
-    var roadRating: Double
-    var routeRating: Double
+    var sceneryRating: Float
+    var roadRating: Float
+    var overallRating: Float
     var routeNotes: String?
-    var routeCreatedBy: CKUserIdentity
+    var startLocation: String
+    var endLocation: String
     var ckRecordID: CKRecord.ID
     
-    init(routeStartpoint: MKPlacemark,
-         routeMidpoint: MKPlacemark,
-         routeEndpoint: MKPlacemark,
-//         routeRegion: String,
+    init(routeStartpoint: CLLocationCoordinate2D,
+         routeMidpoint: CLLocationCoordinate2D,
+         routeEndpoint: CLLocationCoordinate2D,
+         routeName: String,
          cycleType: String,
-         sceneryRating: Double,
-         roadRating: Double,
-         routeRating: Double,
+         sceneryRating: Float,
+         roadRating: Float,
+         overallRating: Float,
          routeNotes: String? = "",
-         routeCreatedBy: CKUserIdentity,
+         startLocation: String,
+         endLocation: String,
          ckRecordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString))
     {
         self.routeStartpoint = routeStartpoint
         self.routeMidpoint = routeMidpoint
         self.routeEndpoint = routeEndpoint
-//        self.routeRegion = routeRegion
+        self.routeName = routeName
         self.cycleType = cycleType
         self.sceneryRating = sceneryRating
         self.roadRating = roadRating
-        self.routeRating = routeRating
+        self.overallRating = overallRating
         self.routeNotes = routeNotes
-        self.routeCreatedBy = routeCreatedBy
+        self.startLocation = startLocation
+        self.endLocation = endLocation
         self.ckRecordID = ckRecordID
     }
 } // End of class
 
 extension Route {
     convenience init?(ckRecord: CKRecord) {
-        guard let routeStartpoint = ckRecord[CKConstants.routeStartKey] as? MKPlacemark,
-              let routeMidpoint = ckRecord[CKConstants.routeMidKey] as? MKPlacemark,
-              let routeEndpoint = ckRecord[CKConstants.routeEndKey] as? MKPlacemark,
-//              let routeRegion = ckRecord[CKConstants.routeRegionKey] as? String,
+        guard let routeStartpointLatitude = ckRecord[CKConstants.routeStartLatitudeKey] as? Double,
+              let routeStartpointLongitude = ckRecord[CKConstants.routeStartLongitudeKey] as? Double,
+              let routeMidpointLatitude = ckRecord[CKConstants.routeMidLatitudeKey] as? Double,
+              let routeMidpointLongitude = ckRecord[CKConstants.routeMidLongitudeKey] as? Double,
+              let routeEndpointLatitude = ckRecord[CKConstants.routeEndLatitudeKey] as? Double,
+              let routeEndpointLongitude = ckRecord[CKConstants.routeEndLongitudeKey] as? Double,
+              let routeName = ckRecord[CKConstants.routeNameKey] as? String,
               let cycleType = ckRecord[CKConstants.cycleTypeKey] as? String,
-              let sceneryRating = ckRecord[CKConstants.sceneryRatingKey] as? Double,
-              let roadRating = ckRecord[CKConstants.roadRatingKey] as? Double,
-              let routeRating = ckRecord[CKConstants.routeRatingKey] as? Double,
+              let sceneryRating = ckRecord[CKConstants.sceneryRatingKey] as? Float,
+              let roadRating = ckRecord[CKConstants.roadRatingKey] as? Float,
+              let overallRating = ckRecord[CKConstants.overallRatingKey] as? Float,
               let routeNotes = ckRecord[CKConstants.routeNotesKey] as? String,
-              let routeCreatedBy = ckRecord[CKConstants.routeCreatedByKey] as? CKUserIdentity
+              let startLocation = ckRecord[CKConstants.startLocationKey] as? String,
+              let endLocation = ckRecord[CKConstants.endLocationKey] as? String
         else { return nil }
         
-        self.init(routeStartpoint: routeStartpoint,
-                  routeMidpoint: routeMidpoint,
-                  routeEndpoint: routeEndpoint,
-//                  routeRegion: routeRegion,
+        self.init(routeStartpoint: CLLocationCoordinate2D(latitude: routeStartpointLatitude, longitude: routeStartpointLongitude),
+                  routeMidpoint: CLLocationCoordinate2D(latitude: routeMidpointLatitude, longitude: routeMidpointLongitude),
+                  routeEndpoint: CLLocationCoordinate2D(latitude: routeEndpointLatitude, longitude: routeEndpointLongitude),
+                  routeName: routeName,
                   cycleType: cycleType,
                   sceneryRating: sceneryRating,
                   roadRating: roadRating,
-                  routeRating: routeRating,
+                  overallRating: overallRating,
                   routeNotes: routeNotes,
-                  routeCreatedBy: routeCreatedBy,
+                  startLocation: startLocation,
+                  endLocation: endLocation,
                   ckRecordID: ckRecord.recordID)
     }
 } // End of extension
@@ -89,16 +97,20 @@ extension CKRecord {
         self.init(recordType: CKConstants.recordTypeKey, recordID: route.ckRecordID)
         
         self.setValuesForKeys([
-            CKConstants.routeStartKey : route.routeStartpoint,
-            CKConstants.routeMidKey : route.routeMidpoint,
-            CKConstants.routeEndKey : route.routeEndpoint,
-//            CKConstants.routeRegionKey : route.routeRegion,
+            CKConstants.routeStartLatitudeKey : Double(route.routeStartpoint.latitude),
+            CKConstants.routeStartLongitudeKey : Double(route.routeStartpoint.longitude),
+            CKConstants.routeMidLatitudeKey : Double(route.routeMidpoint.latitude),
+            CKConstants.routeMidLongitudeKey : Double(route.routeMidpoint.longitude),
+            CKConstants.routeEndLatitudeKey : Double(route.routeEndpoint.latitude),
+            CKConstants.routeEndLongitudeKey : Double(route.routeEndpoint.longitude),
+            CKConstants.routeNameKey : route.routeName,
             CKConstants.cycleTypeKey : route.cycleType,
             CKConstants.sceneryRatingKey : route.sceneryRating,
             CKConstants.roadRatingKey : route.roadRating,
-            CKConstants.routeRatingKey : route.routeRating,
+            CKConstants.overallRatingKey : route.overallRating,
             CKConstants.routeNotesKey : route.routeNotes ?? "",
-            CKConstants.routeCreatedByKey : route.routeCreatedBy
+            CKConstants.startLocationKey : route.startLocation,
+            CKConstants.endLocationKey : route.endLocation
         ])
     }
 } // End of extension

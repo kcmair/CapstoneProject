@@ -18,32 +18,44 @@ class RouteController {
     var routes: [Route] = []
     let coordinate = CLLocationCoordinate2D()
     var publicDB = CKContainer.default().publicCloudDatabase
+    private let geoCoder = CLGeocoder()
     
     // MARK: - Create
-    func createRouteWith(routeStartpoint: MKPlacemark,
-                         routeMidpoint: MKPlacemark,
-                         routeEndpoint: MKPlacemark,
-//                         routeRegion: String,
+    func createRouteWith(routeStartpoint: CLLocationCoordinate2D,
+                         routeMidpoint: CLLocationCoordinate2D,
+                         routeEndpoint: CLLocationCoordinate2D,
+                         routeName: String,
                          cycleType: String,
-                         sceneryRating: Double,
-                         roadRating: Double,
-                         routeRating: Double,
+                         sceneryRating: Float,
+                         roadRating: Float,
+                         overallRating: Float,
                          routeNotes: String?,
-                         routeCreatedBy: CKUserIdentity,
                          completion: @escaping(Bool) -> Void){
         
-        let newRoute = Route(routeStartpoint: routeStartpoint,
-                             routeMidpoint: routeMidpoint,
-                             routeEndpoint: routeEndpoint,
-//                             routeRegion: routeRegion,
-                             cycleType: cycleType,
-                             sceneryRating: sceneryRating,
-                             roadRating: roadRating,
-                             routeRating: routeRating,
-                             routeNotes: routeNotes ?? "",
-                             routeCreatedBy: routeCreatedBy)
-        
-        save(route: newRoute, completion: completion)
+        let startLatitude: CLLocationDegrees = routeStartpoint.latitude
+        let startLongitude: CLLocationDegrees = routeStartpoint.longitude
+        let endLatitude: CLLocationDegrees = routeEndpoint.latitude
+        let endLongitude: CLLocationDegrees = routeEndpoint.longitude
+
+        getLocation(locationLatitude: startLatitude, locationLongitude: startLongitude) { startLocation in
+            
+            self.getLocation(locationLatitude: endLatitude, locationLongitude: endLongitude) { endLocation in
+                
+                let newRoute = Route(routeStartpoint: routeStartpoint,
+                                     routeMidpoint: routeMidpoint,
+                                     routeEndpoint: routeEndpoint,
+                                     routeName: routeName,
+                                     cycleType: cycleType,
+                                     sceneryRating: sceneryRating,
+                                     roadRating: roadRating,
+                                     overallRating: overallRating,
+                                     routeNotes: routeNotes ?? "",
+                                     startLocation: startLocation,
+                                     endLocation: endLocation)
+                
+                self.save(route: newRoute, completion: completion)
+            }
+        }
     }
     
     // MARK: - Save
@@ -116,5 +128,27 @@ class RouteController {
             completion(true)
         }
         publicDB.add(operation)
+    }
+    
+    private func getLocation(locationLatitude: CLLocationDegrees, locationLongitude: CLLocationDegrees, completion: @escaping (String) -> Void){
+        var locationCity = "City error 1"
+        var locationState = "State error 1"
+        let location: CLLocation = CLLocation(latitude: locationLatitude, longitude: locationLongitude)
+        self.geoCoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                return completion("unable to goecode")
+            }
+            
+            guard let placemark = placemarks?.first
+            else {
+                print("No data for startpoint")
+                return completion("no placemark")
+            }
+            
+            locationCity = placemark.locality ?? "City error 2"
+            locationState = placemark.administrativeArea ?? "State error 2"
+            completion("\(locationCity), \(locationState)")
+        }
     }
 } // End of class

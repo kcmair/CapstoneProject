@@ -7,18 +7,9 @@
 
 import Foundation
 
-struct Region {
-    static let northWest = "North West"
-    static let southWest = "South West"
-    static let northCentral = "North Central"
-    static let southCentral = "South Central"
-    static let northEast = "North East"
-    static let southEast = "South East"
-} // End of class
-
 struct CycleType {
-    static let roadBicycle = "Road Bicycle"
-    static let roadMotorcycle = "Road Motorcycle"
+    static let roadBicycle = "Street Bicycle"
+    static let roadMotorcycle = "Street Motorcycle"
     static let mountainBike = "Mountain Bike"
     static let dirtBike = "Motocross/Dirt Bike"
     static let dualSport = "Dual Sport Motorcycle"
@@ -26,14 +17,19 @@ struct CycleType {
 
 struct CKConstants {
     static let recordTypeKey = "Route"
-    static let routeStartKey = "routeStartpoint"
-    static let routeMidKey = "routeMidpoint"
-    static let routeEndKey = "routeEndpoint"
-    static let routeRegionKey = "routeRegion"
+    static let routeStartLatitudeKey = "routeStartLatitude"
+    static let routeStartLongitudeKey = "routeStartLongitude"
+    static let routeMidLatitudeKey = "routeMidLatitude"
+    static let routeMidLongitudeKey = "routeMidLongitude"
+    static let routeEndLatitudeKey = "routeEndLatitude"
+    static let routeEndLongitudeKey = "routeEndLongitude"
+    static let routeNameKey = "routeName"
     static let cycleTypeKey = "cycleType"
     static let sceneryRatingKey = "sceneryRating"
     static let roadRatingKey = "roadRating"
-    static let routeRatingKey = "routeRating"
+    static let overallRatingKey = "overallRating"
     static let routeNotesKey = "routeNotes"
+    static let startLocationKey = "startLocation"
+    static let endLocationKey = "endLocation"
     static let routeCreatedByKey = "routeCreatedBy"
 } // End of struct

@@ -16,10 +16,10 @@ class CreateMapViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     
     // MARK: - Properties
-    var directionsArray: [MKDirections] = []
     var startpointCoordinate = kCLLocationCoordinate2DInvalid
     var midpointCoordinate = kCLLocationCoordinate2DInvalid
     var endpointCoordinate = kCLLocationCoordinate2DInvalid
+    static var routeCoordinates: [CLLocationCoordinate2D] = []
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -56,8 +56,8 @@ class CreateMapViewController: UIViewController {
             return
         }
         
-        let routeCoordinates = [startpointCoordinate, midpointCoordinate, endpointCoordinate]
-        performSegue(withIdentifier: "newRouteDetails", sender: routeCoordinates)
+        CreateMapViewController.routeCoordinates = [startpointCoordinate, midpointCoordinate, endpointCoordinate]
+        performSegue(withIdentifier: "newRouteDetails", sender: Any?.self)
     }
     
     func createDirectionsRequestfrom(firstCoordinate: CLLocationCoordinate2D, secondCoordinate: CLLocationCoordinate2D) {
@@ -90,17 +90,12 @@ class CreateMapViewController: UIViewController {
             }
         }
     }
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-    }
     
     // MARK: - Outlets
     @IBAction func selectButtonTapped(_ sender: Any) {
         getSelectedLocation()
     }
-}
+} // End of class
 
 extension CreateMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

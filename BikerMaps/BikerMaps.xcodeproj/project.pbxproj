@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		D81AFDC12811D8FD00DB8B9D /* CreateMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81AFDC02811D8FD00DB8B9D /* CreateMapViewController.swift */; };
 		D81AFE052813988900DB8B9D /* CreateDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81AFE042813988900DB8B9D /* CreateDetailsViewController.swift */; };
-		D81AFE072814B90100DB8B9D /* RatingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81AFE062814B90100DB8B9D /* RatingController.swift */; };
+		D81AFE4D2818ABDA00DB8B9D /* RouteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81AFE4C2818ABDA00DB8B9D /* RouteListViewController.swift */; };
+		D849CB69281A158000E79F08 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849CB68281A158000E79F08 /* RouteDetailViewController.swift */; };
 		D88425FE280F1AFD00DE3019 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88425FD280F1AFD00DE3019 /* AppDelegate.swift */; };
 		D8842600280F1AFD00DE3019 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88425FF280F1AFD00DE3019 /* SceneDelegate.swift */; };
 		D8842602280F1AFD00DE3019 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8842601280F1AFD00DE3019 /* LaunchViewController.swift */; };
@@ -20,12 +21,14 @@
 		D884261D280F1EAE00DE3019 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884261C280F1EAE00DE3019 /* Route.swift */; };
 		D884261F280F4CAC00DE3019 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884261E280F4CAC00DE3019 /* StringConstants.swift */; };
 		D8842621280F52EE00DE3019 /* RouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8842620280F52EE00DE3019 /* RouteController.swift */; };
+		D8AE6D652819A7CA0028F5BE /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AE6D642819A7CA0028F5BE /* RouteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D81AFDC02811D8FD00DB8B9D /* CreateMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMapViewController.swift; sourceTree = "<group>"; };
 		D81AFE042813988900DB8B9D /* CreateDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDetailsViewController.swift; sourceTree = "<group>"; };
-		D81AFE062814B90100DB8B9D /* RatingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingController.swift; sourceTree = "<group>"; };
+		D81AFE4C2818ABDA00DB8B9D /* RouteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListViewController.swift; sourceTree = "<group>"; };
+		D849CB68281A158000E79F08 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		D88425FA280F1AFD00DE3019 /* BikerMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikerMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D88425FD280F1AFD00DE3019 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D88425FF280F1AFD00DE3019 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 		D884261C280F1EAE00DE3019 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		D884261E280F4CAC00DE3019 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		D8842620280F52EE00DE3019 /* RouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteController.swift; sourceTree = "<group>"; };
+		D8AE6D642819A7CA0028F5BE /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				D884261E280F4CAC00DE3019 /* StringConstants.swift */,
-				D81AFE062814B90100DB8B9D /* RatingController.swift */,
 			);
 			path = "Helpers+Convenience";
 			sourceTree = "<group>";
@@ -134,6 +137,9 @@
 				D8842601280F1AFD00DE3019 /* LaunchViewController.swift */,
 				D81AFDC02811D8FD00DB8B9D /* CreateMapViewController.swift */,
 				D81AFE042813988900DB8B9D /* CreateDetailsViewController.swift */,
+				D81AFE4C2818ABDA00DB8B9D /* RouteListViewController.swift */,
+				D8AE6D642819A7CA0028F5BE /* RouteTableViewCell.swift */,
+				D849CB68281A158000E79F08 /* RouteDetailViewController.swift */,
 				D8842617280F1C1800DE3019 /* Views */,
 			);
 			path = ViewControllers;
@@ -226,14 +232,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8AE6D652819A7CA0028F5BE /* RouteTableViewCell.swift in Sources */,
 				D8842602280F1AFD00DE3019 /* LaunchViewController.swift in Sources */,
 				D81AFDC12811D8FD00DB8B9D /* CreateMapViewController.swift in Sources */,
-				D81AFE072814B90100DB8B9D /* RatingController.swift in Sources */,
 				D8842621280F52EE00DE3019 /* RouteController.swift in Sources */,
 				D88425FE280F1AFD00DE3019 /* AppDelegate.swift in Sources */,
 				D884261D280F1EAE00DE3019 /* Route.swift in Sources */,
+				D849CB69281A158000E79F08 /* RouteDetailViewController.swift in Sources */,
 				D884261F280F4CAC00DE3019 /* StringConstants.swift in Sources */,
 				D8842600280F1AFD00DE3019 /* SceneDelegate.swift in Sources */,
+				D81AFE4D2818ABDA00DB8B9D /* RouteListViewController.swift in Sources */,
 				D81AFE052813988900DB8B9D /* CreateDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
