@@ -20,7 +20,7 @@ class CreateDetailsViewController: UIViewController {
     
     // MARK: - Properties
     var route: Route?
-    let cycleTypes = ["Scroll to select", CycleType.roadBicycle, CycleType.roadMotorcycle, CycleType.mountainBike, CycleType.dirtBike, CycleType.dualSport]
+    let cycleTypes = [CycleType.initialText, CycleType.roadBicycle, CycleType.roadMotorcycle, CycleType.mountainBike, CycleType.dirtBike, CycleType.dualSport]
     let routeCoordinates = CreateMapViewController.routeCoordinates
     var selectedCycleType: String?
     var sceneryRating = 0 {
@@ -28,7 +28,7 @@ class CreateDetailsViewController: UIViewController {
             for starButton in sceneryRatingCollection {
                 let imageName = (starButton.tag < sceneryRating ? "star.fill" : "star")
                 starButton.setImage(UIImage(systemName: imageName), for: .normal)
-                starButton.tintColor = (starButton.tag < sceneryRating ? .systemYellow : .systemBlue)
+                starButton.tintColor = (starButton.tag < sceneryRating ? .systemYellow : .black)
             }
             print(">> new scenery rating \(sceneryRating)")
         }
@@ -38,7 +38,7 @@ class CreateDetailsViewController: UIViewController {
             for starButton in roadRatingCollection {
                 let imageName = (starButton.tag < roadRating ? "star.fill" : "star")
                 starButton.setImage(UIImage(systemName: imageName), for: .normal)
-                starButton.tintColor = (starButton.tag < roadRating ? .systemYellow : .systemBlue)
+                starButton.tintColor = (starButton.tag < roadRating ? .systemYellow : .black)
             }
             print(">> new road rating \(roadRating)")
         }
@@ -48,7 +48,7 @@ class CreateDetailsViewController: UIViewController {
             for starButton in overallRatingCollection {
                 let imageName = (starButton.tag < overallRating ? "star.fill" : "star")
                 starButton.setImage(UIImage(systemName: imageName), for: .normal)
-                starButton.tintColor = (starButton.tag < overallRating ? .systemYellow : .systemBlue)
+                starButton.tintColor = (starButton.tag < overallRating ? .systemYellow : .black)
             }
             print(">> new ovarall rating \(overallRating)")
         }
@@ -64,7 +64,7 @@ class CreateDetailsViewController: UIViewController {
     
     // MARK: - Helper Functions
     func checkForValidEntries() -> Bool {
-        if routeNameTextField.text == "" {
+        if routeNameTextField.text == "" || routeNameTextField.text == CycleType.initialText {
             // TODO: - alert user to enter route name
             return false
         } else if selectedCycleType == nil {
@@ -142,7 +142,7 @@ extension CreateDetailsViewController: UIPickerViewDelegate, UIPickerViewDataSou
         if let v = view {
             label = v as! UILabel
         }
-        label.font = UIFont (name: "Helvetica Neue", size: 17)
+        label.font = UIFont (name: "American Typewriter", size: 16)
         label.text =  cycleTypes[row]
         label.textAlignment = .center
         return label

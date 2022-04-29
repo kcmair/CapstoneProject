@@ -8,6 +8,7 @@
 import Foundation
 
 struct CycleType {
+    static let initialText = "Scroll to select"
     static let roadBicycle = "Street Bicycle"
     static let roadMotorcycle = "Street Motorcycle"
     static let mountainBike = "Mountain Bike"
