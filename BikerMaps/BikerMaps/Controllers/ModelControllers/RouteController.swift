@@ -28,6 +28,7 @@ class RouteController {
                          cycleType: String,
                          sceneryRating: Float,
                          roadRating: Float,
+                         difficultyRating: Float,
                          overallRating: Float,
                          routeNotes: String?,
                          completion: @escaping(Bool) -> Void){
@@ -48,6 +49,7 @@ class RouteController {
                                      cycleType: cycleType,
                                      sceneryRating: sceneryRating,
                                      roadRating: roadRating,
+                                     difficultyRating: difficultyRating,
                                      overallRating: overallRating,
                                      routeNotes: routeNotes ?? "",
                                      startLocation: startLocation,

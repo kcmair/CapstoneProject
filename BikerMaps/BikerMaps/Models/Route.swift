@@ -18,6 +18,7 @@ class Route {
     var cycleType: String
     var sceneryRating: Float
     var roadRating: Float
+    var difficultyRating: Float
     var overallRating: Float
     var routeNotes: String?
     var startLocation: String
@@ -31,6 +32,7 @@ class Route {
          cycleType: String,
          sceneryRating: Float,
          roadRating: Float,
+         difficultyRating: Float,
          overallRating: Float,
          routeNotes: String? = "",
          startLocation: String,
@@ -44,6 +46,7 @@ class Route {
         self.cycleType = cycleType
         self.sceneryRating = sceneryRating
         self.roadRating = roadRating
+        self.difficultyRating = difficultyRating
         self.overallRating = overallRating
         self.routeNotes = routeNotes
         self.startLocation = startLocation
@@ -64,6 +67,7 @@ extension Route {
               let cycleType = ckRecord[CKConstants.cycleTypeKey] as? String,
               let sceneryRating = ckRecord[CKConstants.sceneryRatingKey] as? Float,
               let roadRating = ckRecord[CKConstants.roadRatingKey] as? Float,
+              let difficultyRating = ckRecord[CKConstants.difficultyRatingKey] as? Float,
               let overallRating = ckRecord[CKConstants.overallRatingKey] as? Float,
               let routeNotes = ckRecord[CKConstants.routeNotesKey] as? String,
               let startLocation = ckRecord[CKConstants.startLocationKey] as? String,
@@ -77,6 +81,7 @@ extension Route {
                   cycleType: cycleType,
                   sceneryRating: sceneryRating,
                   roadRating: roadRating,
+                  difficultyRating: difficultyRating,
                   overallRating: overallRating,
                   routeNotes: routeNotes,
                   startLocation: startLocation,
@@ -107,6 +112,7 @@ extension CKRecord {
             CKConstants.cycleTypeKey : route.cycleType,
             CKConstants.sceneryRatingKey : route.sceneryRating,
             CKConstants.roadRatingKey : route.roadRating,
+            CKConstants.difficultyRatingKey : route.difficultyRating,
             CKConstants.overallRatingKey : route.overallRating,
             CKConstants.routeNotesKey : route.routeNotes ?? "",
             CKConstants.startLocationKey : route.startLocation,

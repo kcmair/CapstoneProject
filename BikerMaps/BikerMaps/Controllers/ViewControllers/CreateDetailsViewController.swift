@@ -15,6 +15,7 @@ class CreateDetailsViewController: UIViewController {
     @IBOutlet weak var cyclePicker: UIPickerView!
     @IBOutlet var sceneryRatingCollection: [UIButton]!
     @IBOutlet var roadRatingCollection: [UIButton]!
+    @IBOutlet var difficultyRatingCollection: [UIButton]!
     @IBOutlet var overallRatingCollection: [UIButton]!
     @IBOutlet weak var notesTextView: UITextView!
     
@@ -41,6 +42,16 @@ class CreateDetailsViewController: UIViewController {
                 starButton.tintColor = (starButton.tag < roadRating ? .systemYellow : .black)
             }
             print(">> new road rating \(roadRating)")
+        }
+    }
+    var difficultyRating = 0 {
+        didSet {
+            for starButton in difficultyRatingCollection {
+                let imageName = (starButton.tag < difficultyRating ? "star.fill" : "star")
+                starButton.setImage(UIImage(systemName: imageName), for: .normal)
+                starButton.tintColor = (starButton.tag < difficultyRating ? .systemYellow : .black)
+            }
+            print(">> new difficulty rating \(difficultyRating)")
         }
     }
     var overallRating = 0 {
@@ -92,6 +103,10 @@ class CreateDetailsViewController: UIViewController {
         roadRating = sender.tag + 1
     }
     
+    @IBAction func difficultyRatingButtonTapped(_ sender: UIButton) {
+        difficultyRating = sender.tag + 1
+    }
+    
     @IBAction func ovarallRatingButtonTapped(_ sender: UIButton) {
         overallRating = sender.tag + 1
     }
@@ -110,6 +125,7 @@ class CreateDetailsViewController: UIViewController {
                                                    cycleType: selectedCycleType!,
                                                    sceneryRating: Float(sceneryRating),
                                                    roadRating: Float(roadRating),
+                                                   difficultyRating: Float(difficultyRating),
                                                    overallRating: Float(overallRating),
                                                    routeNotes: notesTextView.text ?? "") { success in
                 if success {

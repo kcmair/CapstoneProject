@@ -14,6 +14,7 @@ class CreateMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var directionsLabel: UILabel!
     @IBOutlet weak var selectButton: UIButton!
+    @IBOutlet weak var pinImageView: UIImageView!
     
     // MARK: - Properties
     var startpointCoordinate = kCLLocationCoordinate2DInvalid
@@ -51,6 +52,7 @@ class CreateMapViewController: UIViewController {
             midpointCoordinate = getCenterLocation(for: mapView).coordinate
             createDirectionsRequestfrom(firstCoordinate: startpointCoordinate, secondCoordinate: midpointCoordinate)
             createDirectionsRequestfrom(firstCoordinate: midpointCoordinate, secondCoordinate: endpointCoordinate)
+            pinImageView.image = nil
             directionsLabel.text = "Is this the correct route?\n If so tap next."
             selectButton.configuration?.title = "Next"
             return

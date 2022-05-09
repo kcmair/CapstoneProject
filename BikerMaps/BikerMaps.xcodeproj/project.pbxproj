@@ -24,6 +24,7 @@
 		D884261F280F4CAC00DE3019 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884261E280F4CAC00DE3019 /* StringConstants.swift */; };
 		D8842621280F52EE00DE3019 /* RouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8842620280F52EE00DE3019 /* RouteController.swift */; };
 		D8AE6D652819A7CA0028F5BE /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AE6D642819A7CA0028F5BE /* RouteTableViewCell.swift */; };
+		D8BF65942821FE35002A35D8 /* BikerMapsHelp.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D8BF65932821FE35002A35D8 /* BikerMapsHelp.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		D884261E280F4CAC00DE3019 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		D8842620280F52EE00DE3019 /* RouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteController.swift; sourceTree = "<group>"; };
 		D8AE6D642819A7CA0028F5BE /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
+		D8BF65932821FE35002A35D8 /* BikerMapsHelp.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = BikerMapsHelp.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		D8842615280F1BC100DE3019 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D8BF65932821FE35002A35D8 /* BikerMapsHelp.rtf */,
 				D88425FD280F1AFD00DE3019 /* AppDelegate.swift */,
 				D88425FF280F1AFD00DE3019 /* SceneDelegate.swift */,
 				D8842606280F1AFE00DE3019 /* Assets.xcassets */,
@@ -227,6 +230,7 @@
 			files = (
 				D884260A280F1AFE00DE3019 /* LaunchScreen.storyboard in Resources */,
 				D8842607280F1AFE00DE3019 /* Assets.xcassets in Resources */,
+				D8BF65942821FE35002A35D8 /* BikerMapsHelp.rtf in Resources */,
 				D8842605280F1AFD00DE3019 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

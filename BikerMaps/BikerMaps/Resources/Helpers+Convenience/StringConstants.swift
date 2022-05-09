@@ -28,6 +28,7 @@ struct CKConstants {
     static let cycleTypeKey = "cycleType"
     static let sceneryRatingKey = "sceneryRating"
     static let roadRatingKey = "roadRating"
+    static let difficultyRatingKey = "difficultyRating"
     static let overallRatingKey = "overallRating"
     static let routeNotesKey = "routeNotes"
     static let startLocationKey = "startLocation"

@@ -16,6 +16,7 @@ class RouteDetailViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var sceneryRatingLabel: UILabel!
     @IBOutlet weak var roadRatingLabel: UILabel!
+    @IBOutlet weak var difficultyRatingLabel: UILabel!
     @IBOutlet weak var overallRatingLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -36,6 +37,7 @@ class RouteDetailViewController: UIViewController {
             cycleTypeLabel.text = route.cycleType
             sceneryRatingLabel.text = "\(route.sceneryRating)"
             roadRatingLabel.text = "\(route.roadRating)"
+            difficultyRatingLabel.text = "\(route.difficultyRating)"
             overallRatingLabel.text = "\(route.overallRating)"
             createDirectionsRequestfrom(firstCoordinate: route.routeStartpoint, secondCoordinate: route.routeMidpoint)
             createDirectionsRequestfrom(firstCoordinate: route.routeMidpoint, secondCoordinate: route.routeEndpoint)

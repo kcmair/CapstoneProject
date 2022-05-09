@@ -8,7 +8,7 @@
 import UIKit
 
 class HelpViewController: UIViewController {
-
+    
     @IBOutlet weak var helpView: UIView!
     @IBOutlet weak var helpTextLabel: UILabel!
     
@@ -18,7 +18,12 @@ class HelpViewController: UIViewController {
     }
     
     private func updateViews() {
-        helpTextLabel.text = HelpView.helpViewText
+        if let url = Bundle.main.url(forResource: "BikerMapsHelp", withExtension: "rtf") {
+            let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf]
+            let rtfString = try? NSMutableAttributedString(url: url, options: options, documentAttributes: nil)
+            helpTextLabel.numberOfLines = 0
+            helpTextLabel.lineBreakMode = .byWordWrapping
+            helpTextLabel.attributedText = rtfString
+        }
     }
-
-}
+} // End of class
